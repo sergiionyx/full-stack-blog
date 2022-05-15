@@ -1,4 +1,5 @@
 async function editBtnHandler() {
+    
   const response = await fetch(`/profile/edit`, {
     method: 'GET'
   });

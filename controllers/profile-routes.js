@@ -48,41 +48,66 @@ router.get("/edit", (req, res) => {
 });
 
 router.put("/edit", (req, res) => {
-    console.log("MADE REQUEST SUCESSFULLY");
+  console.log("MADE REQUEST SUCESSFULLY");
+  console.log("session is below");
+  console.log(req.session);
+  console.log(req.body);
+  console.log(typeof req.body);
 
-//   if (req.session.loggedIn) {
-    console.log(req.body);
-    console.log(typeof req.body);
-    // const currentUserId = req.session.user_id;
+  // if (req.session.loggedIn) {
+  // const currentUserId = 3;
+  const currentUserId = req.session.user_id;
 
-    // const currentUserId = 3;
-    // const avatarUrl = req.body.avatar_url;
-    // if (!avatarUrl) {
-    //   res.status(400).json({ message: "no avatar url found" });
-    // }
-    // User.update(
-    //   { avatar_url: avatarUrl },
-    //   {
-    //     where: {
-    //       id: currentUserId,
-    //     },
-    //   }
-    // )
-    //   .then((data) =>
-    //     res.status(200).json({ message: "record updated!", data })
-    //   )
-    //   .catch((err) => {
-    //     console.log(err);
-    //     res.status(500).json({ message: "Unexpecting error updating user!" });
-    //   });
-
+  const avatarUrl = req.body.avatar_url;
+  if (!avatarUrl) {
+    res.status(400).json({ message: "no avatar url found" });
   }
-//   else {
-//     res.status(401).json({ message: "Must be logged in to upload!" });
-//   }
+  User.update(
+    { avatar_url: avatarUrl },
+    {
+      where: {
+        id: currentUserId,
+      },
+    }
+  )
+    .then((data) => res.status(200).json({ message: "record updated!", data }))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Unexpecting error updating user!" });
+    });
+  // } else {
+  //   res.status(401).json({ message: "Must be logged in to upload!" });
+  // }
 
-//  //   res.render("edit-profile", { profileData, loggedIn: true });
-// }
-);
+  //   res.render("edit-profile", { profileData, loggedIn: true });
+});
+
+router.post("/edit",  (req, res) => {
+  const currentUserId = req.session.user_id;
+  const userNewAbout = req.body.aboutMe;
+  console.log(currentUserId);
+  console.log(userNewAbout);
+  User.update(
+    {
+      about_me: userNewAbout,
+    },
+    {
+      where: {
+        id: currentUserId,
+      },
+    }
+  )
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No User found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;
