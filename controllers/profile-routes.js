@@ -50,15 +50,12 @@ router.get("/edit", (req, res) => {
 router.put("/edit", (req, res) => {
   console.log("MADE REQUEST SUCESSFULLY");
   console.log("session is below");
-  console.log(req.session);
-  console.log(req.body);
-  console.log(typeof req.body);
+  console.log(req.session.user_id);
+  console.log(req.body.avatarUrl);
 
   // if (req.session.loggedIn) {
-  // const currentUserId = 3;
   const currentUserId = req.session.user_id;
-
-  const avatarUrl = req.body.avatar_url;
+  const avatarUrl = req.body.avatarUrl;
   if (!avatarUrl) {
     res.status(400).json({ message: "no avatar url found" });
   }
@@ -79,10 +76,11 @@ router.put("/edit", (req, res) => {
   //   res.status(401).json({ message: "Must be logged in to upload!" });
   // }
 
-  //   res.render("edit-profile", { profileData, loggedIn: true });
+    // res.render("edit-profile", { profileData, loggedIn: true });
+    // res.status(200).json({message: "avatar url saved"});
 });
 
-router.post("/edit",  (req, res) => {
+router.post("/edit", (req, res) => {
   const currentUserId = req.session.user_id;
   const userNewAbout = req.body.aboutMe;
   console.log(currentUserId);
@@ -98,6 +96,7 @@ router.post("/edit",  (req, res) => {
     }
   )
     .then((dbUserData) => {
+      console.log(dbUserData);
       if (!dbUserData) {
         res.status(404).json({ message: "No User found with this id" });
         return;

@@ -41,7 +41,7 @@ User.init(
     avatar_url: {
       type: DataTypes.STRING,
     },
-    aboutMe: {
+    about_me: {
       type: DataTypes.STRING,
     }
   },
