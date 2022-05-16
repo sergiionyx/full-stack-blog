@@ -16,8 +16,9 @@ router.get("/", (req, res) => {
         res.status(404).json({ message: "No profile page found" });
         return;
       }
+      const myPage = true;
       const profileData = dbUserData.dataValues;
-      res.render("profile-page", { profileData, loggedIn: true });
+      res.render("profile-page", { profileData, myPage, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
