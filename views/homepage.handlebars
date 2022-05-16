@@ -1,0 +1,11 @@
+{{#if username}}
+<h3>Welcome, {{username}}!</h3>
+{{/if}}
+
+<ul class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    {{> post-info post }}
+  </li>
+  {{/each}}
+</ul>

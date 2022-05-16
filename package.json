@@ -1,22 +1,30 @@
 {
-  "name": "project-2",
+  "name": "full-stack-blog",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "16.x"
+  },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js",
+    "seeds": "node seeds/index.js"
   },
   "author": "",
   "license": "ISC",
   "homepage": "",
   "dependencies": {
-    "bcrypt": "^4.0.1",
-    "connect-session-sequelize": "^6.1.1",
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "express-session": "^1.17.0",
-    "mysql2": "^2.0.1",
-    "sequelize": "^5.21.2"
+    "express-handlebars": "^6.0.5",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
   }
 }
