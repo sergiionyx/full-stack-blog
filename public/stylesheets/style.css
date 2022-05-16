@@ -8,6 +8,7 @@ body, html {
   margin: 0;
   font-family: sans-serif;
   color: #333;
+  background-image: url("../images/coding1.png");
 }
 
 a {
@@ -124,6 +125,7 @@ header h1 {
 main {
   flex: 1;
   padding: 2% 4%;
+  background-color: lightskyblue;
 }
 
 .btn-no-style {
@@ -132,7 +134,7 @@ main {
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  color: #225ca3;
+  color: lightblue;
   font-size: 100%;
   font-weight: bold;
   transition: color .1s;
@@ -204,10 +206,11 @@ main {
   margin-bottom: 5%;
 }
 
-footer {
+/*footer {
   border-top: 1px solid #ccc;
   display: flex;
   justify-content: center;
   padding: 1%;
   font-size: 110%;
-}
+} */
+

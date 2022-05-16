@@ -5,37 +5,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Full Stack Blog</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="https://app.simplefileupload.com/buckets/fefbbf8cf4ff2a15b0b7a3fce8805116.js"></script>
 </head>
 
 <body>
+  <img class="background-img">
   <div class="wrapper">
     <header>
       <h1>
-        <a href="/">Full Stack Blog</a>
+        <a class="navbar-brand" href="/">Full Stack Blog</a>
       </h1>
-      <nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <a href="/profile">profile</a>
-        <button id="logout" class="btn-no-style">logout</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item active">
+              <button id="logout" class="nav-link" class="btn btn-light">Logout</button>
+            </li>
+            </ul>
+        </div>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
+    <footer class="bg-light text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section>
+      <!-- Google -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #dd4b39;"
+        href="https://www.google.com/"
+        role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #0082ca;"
+        href="#!"
+        role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn btn-primary btn-floating m-1 "
+        style="background-color: #333333;"
+        href="https://github.com/sergiionyx/full-stack-blog"
+        role="button"
+        ><i class="fab fa-github"></i>
+        </a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">FullStackBlog.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
   </div>
   
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
