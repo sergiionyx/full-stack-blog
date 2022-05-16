@@ -41,6 +41,9 @@ User.init(
     avatar_url: {
       type: DataTypes.STRING,
     },
+    about_me: {
+      type: DataTypes.STRING,
+    }
   },
   {
     hooks: {

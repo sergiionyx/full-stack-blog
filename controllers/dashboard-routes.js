@@ -1,11 +1,11 @@
 const router = require("express").Router();
+const session = require("express-session");
 const sequelize = require("../config/connection");
 const { Post, User, Comment, Vote } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get all posts for dashboard
 router.get("/", withAuth, (req, res) => {
-  console.log(req.session);
   console.log("======================");
   Post.findAll({
     where: {
@@ -23,6 +23,7 @@ router.get("/", withAuth, (req, res) => {
         "vote_count",
       ],
     ],
+    order: [["id", "DESC"]],
     include: [
       {
         model: Comment,
@@ -34,7 +35,7 @@ router.get("/", withAuth, (req, res) => {
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["id", "username", "avatar_url"],
       },
     ],
   })

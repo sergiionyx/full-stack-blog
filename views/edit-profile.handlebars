@@ -1,6 +1,33 @@
+<a href="/profile"> &larr; Back to profile page</a>
 <div>
-    <label for="avatar_url">Load new picture</label>
+  <label for="avatar_url">Load new picture</label>
 </div>
 <form>
-  <input type="hidden" name="avatar_url" id="avatar_url" class="simple-file-upload">
+  <input
+    type="hidden"
+    name="avatar_url"
+    id="avatar_url"
+    class="simple-file-upload"
+  />
 </form>
+
+<article>
+  <div>
+    <label for="edit-profile-about">Edit "About me" text</label>
+  </div>
+  <form class="edit-profile-about">
+    <div>
+      <input name="about-me" type="text" value="{{profileData.aboutMe}}" />
+    </div>
+    <button type="submit">Save text</button>
+  </form>
+  <div>
+    <img src="{{profileData.avatar_url}}" alt="profile picture" />
+  </div>
+  <div>
+    <p>{{profileData.about_me}}</p>
+  </div>
+</article>
+
+<script src="/javascript/edit-avatar.js"></script>
+<script src="/javascript/edit-about-me.js"></script>
