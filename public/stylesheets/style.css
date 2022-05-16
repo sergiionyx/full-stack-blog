@@ -22,6 +22,41 @@ a:hover {
   color: #3486eb;
 }
 
+.avatar-icon{
+  height: 1.75rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+ul li {
+  list-style: none;
+}
+
+.profile-img{
+  height: 20vmax;
+  width: 20vmax;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* .profile-img {
+  height: 30vmax;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+} */
+
+/* .profile-img-div {
+  height: 25vmax;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.profile-img-div img {
+  height: 40vmax;
+  margin: 0 0 0 -3vmax;
+} */
+
 button {
   background-color: #225ca3;
   border: 0;

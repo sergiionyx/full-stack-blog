@@ -21,9 +21,14 @@
     "express": "^4.18.1",
     "express-handlebars": "^6.0.5",
     "express-session": "^1.17.2",
+<<<<<<< HEAD
     "mdb-ui-kit": "^4.0.0",
     "mysql2": "^2.0.1",
     "sequelize": "^5.21.2"
+=======
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0"
+>>>>>>> 54d38edad8e1c3cf16bd52b016a769638aa1c8b7
   },
   "devDependencies": {
     "jest": "^28.1.0"
