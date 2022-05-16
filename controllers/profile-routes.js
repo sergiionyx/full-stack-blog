@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
         return;
       }
       const profileData = dbUserData.dataValues;
-      //   console.log(profileData);
       res.render("profile-page", { profileData, loggedIn: true });
     })
     .catch((err) => {
@@ -48,16 +47,10 @@ router.get("/edit", (req, res) => {
 });
 
 router.put("/edit", (req, res) => {
-  console.log("MADE REQUEST SUCESSFULLY");
-  console.log("session is below");
-  console.log(req.session.user_id);
-  console.log(req.body.avatarUrl);
-
-  // if (req.session.loggedIn) {
   const currentUserId = req.session.user_id;
   const avatarUrl = req.body.avatarUrl;
   if (!avatarUrl) {
-    res.status(400).json({ message: "no avatar url found" });
+    res.status(400).json({ message: "No avatar url found" });
   }
   User.update(
     { avatar_url: avatarUrl },
@@ -72,19 +65,11 @@ router.put("/edit", (req, res) => {
       console.log(err);
       res.status(500).json({ message: "Unexpecting error updating user!" });
     });
-  // } else {
-  //   res.status(401).json({ message: "Must be logged in to upload!" });
-  // }
-
-    // res.render("edit-profile", { profileData, loggedIn: true });
-    // res.status(200).json({message: "avatar url saved"});
 });
 
 router.post("/edit", (req, res) => {
   const currentUserId = req.session.user_id;
   const userNewAbout = req.body.aboutMe;
-  console.log(currentUserId);
-  console.log(userNewAbout);
   User.update(
     {
       about_me: userNewAbout,
@@ -95,13 +80,40 @@ router.post("/edit", (req, res) => {
       },
     }
   )
-    .then((dbUserData) => {
-      console.log(dbUserData);
-      if (!dbUserData) {
+    .then((data) => {
+      if (!data) {
         res.status(404).json({ message: "No User found with this id" });
         return;
       }
-      res.json(dbUserData);
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/:id", (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No profile page found" });
+        return;
+      }
+      const profileData = dbUserData.dataValues;
+      // check if use go to own page
+      if (req.session.user_id == req.params.id) {
+        let myPage = true;
+        res.render("profile-page", { profileData, myPage, loggedIn: true });
+      } else {
+        let myPage = false;
+        res.render("profile-page", { profileData, myPage, loggedIn: true });
+      }
     })
     .catch((err) => {
       console.log(err);

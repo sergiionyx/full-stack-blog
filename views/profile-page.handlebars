@@ -1,20 +1,18 @@
 <h1>Hello, {{profileData.username}}!</h1>
-
-<button id="edit-profile-btn">Edit profile</button>
-
+{{#if myPage}}
+{{> edit-profile-page-btn}}
+{{/if}}
 <div>
     <label for="avatar_url">Your profile picture</label>
 </div>
-<form>
-  <img src="{{profileData.avatar_url}}" alt="profile picture"/>
-</form>
+
+<img src="{{profileData.avatar_url}}" alt="profile picture" class="profile-img"/>
+
 
 <section class="about-me">
     <h2>About me</h2>
-    <p>{{profileData.aboutMe}}</p>
+    <p>{{profileData.about_me}}</p>
 </section>
-
-<script src="/javascript/profile-page.js"></script>
 
 
 

@@ -1,11 +1,10 @@
 async function editBtnHandler() {
-    
   const response = await fetch(`/profile/edit`, {
-    method: 'GET'
+    method: "GET",
   });
 
   if (response.ok) {
-    document.location.replace('/profile/edit');
+    document.location.replace("/profile/edit");
   } else {
     alert(response.statusText);
   }
@@ -14,4 +13,3 @@ async function editBtnHandler() {
 document
   .querySelector("#edit-profile-btn")
   .addEventListener("click", editBtnHandler);
-

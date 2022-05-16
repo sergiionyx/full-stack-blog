@@ -2,31 +2,21 @@ const uploader = document.getElementById("avatar_url");
 
 // event handler for sucessfully uploaded picture
 uploader.addEventListener("fileUploadSuccess", async function (e) {
-  console.log("value of the picture (link)");
-  console.log(this.value);
   const avatarUrl = this.value;
-  //   if (this.value) {
-  // try{
-  const response = await fetch(`/profile/edit`, {
-    method: "PUT",
-    body: JSON.stringify({ avatarUrl }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.ok) {
-    document.location.reload();
+  if (avatarUrl) {
+    try {
+      const response = await fetch(`/profile/edit`, {
+        method: "PUT",
+        body: JSON.stringify({ avatarUrl }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
   } else {
-    alert(response.statusText);
+    console.log("Could not load the picture");
   }
-  // const data = response.json();
-  // console.log(data);
-  // }
-  // catch (e) {
-  //     console.log(e);
-  // }
-  //     }
-  //     else {
-  //     console.log("could not find the value");
-  //   }
+  document.location.reload();
 });

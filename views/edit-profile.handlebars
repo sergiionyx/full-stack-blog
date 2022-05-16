@@ -12,15 +12,21 @@
 </form>
 
 <article>
-    <div>
-  <label for="edit-profile-about">Edit "About me" text</label>
-</div>
+  <div>
+    <label for="edit-profile-about">Edit "About me" text</label>
+  </div>
   <form class="edit-profile-about">
     <div>
       <input name="about-me" type="text" value="{{profileData.aboutMe}}" />
     </div>
     <button type="submit">Save text</button>
   </form>
+  <div>
+    <img src="{{profileData.avatar_url}}" alt="profile picture" />
+  </div>
+  <div>
+    <p>{{profileData.about_me}}</p>
+  </div>
 </article>
 
 <script src="/javascript/edit-avatar.js"></script>
